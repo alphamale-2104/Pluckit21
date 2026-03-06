@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="CSS/booking.css" rel="stylesheet" type="text/css"/>
+    <title>Booking</title>
+</head>
+<body>
+                      
+     <div id="header">
+        <img id="starwberry" src="images/14.jpg" height="50px" width="70px" />
+
+        <nav id="n1">
+                            <a id="a0" href="adminlogin.html">Admin login</a> |
+
+            <a id="a1" href="index.html">Home</a> |
+            <a id="a2" href="about.html">About Us</a> |
+            <a id="a3" href="gallery.html">Gallery</a> |
+            <a id="a4" href="activities.html">Activities</a> |
+            <a id="a5" href="booking.html">Booking</a> |
+            <a id="a6" href="JSP PAGE/contact.jsp">Contact</a>
+            <a id="a7" href="location.html">Location</a>
+
+        </nav>
+    </div>
+          
+    <h1>Book Your Visit</h1>
+    
+    <div id="left">
+        <img id="walk" src="images/walk.jpg" height="180px" width="300" alt=""/>
+        <p id="p1">"we would like to say you that <br>the ALL VISITORS <br>can FREELY VISIT<br> the farm"</p>
+        <br>
+        <img id="mrp" src="images/s.jpg" height="180px" width="300" alt=""/>
+        <p id="p2">"Buy 3 kg strawberries, get <br> 1/2 kg strawberries FREE!"</p>
+    </div>
+    
+    <form method="post" action="JSP PAGE/bookingdata.jsp">
+        <label id="labl">Name:</label><br>
+        <input id="bx" type="text" placeholder="enter your name" name="name"><br><br>
+
+        <label id="labl">Email:</label><br>
+        <input id="bx" type="email" placeholder="enter valid email id"  name="email"><br><br>
+
+        
+        <label id="labl">Mobile No:</label><br>
+        <input id="bx" pattern="[0-9]{10}" placeholder="enter phone-no of 10 digit" type="tel" name="mobile"><br><br>
+
+        <label id="labl">Visit Date:</label><br>
+        <input id="bx" type="date"  name="date"><br><br>
+
+        <label id="labl">Number of People:</label><br>
+        <input id="bx" type="" name="people"><br><br>
+
+        <input id="btn" type="submit" name="btn" value="Book">
+    </form>
+    
+    <br><br><br>
+
+    <div class="grid">
+        <div class="box">
+            <img src="images/strawberry-berry-levitating-white-background.jpg" height="70px" width="70px" alt=""/>
+            <h3>Farm visit</h3>
+            <p>It is a pick-your-own berry farm in Mahabaleshwar. It is our goal to provide customers with the freshest produce throughout the year as well as a unique farming experience</p>
+        </div>
+                
+        <div id="rules">
+            <img src="images/job-description_2275274.png" height="70px" width="70px" alt=""/>
+            <h3>Our Rules</h3>
+            <p>1. Pay your entry fee and collect your strawberry punnet <br> 2.Follow staff instructions on how and where to pick <br> 3. Remember - you must be able to close your punnet, otherwise, you will be charged for the extra strawberries<br> 4. After picking strawberry you will Compulsorily Purchase this Strawberry In Our Rate*</p>
+        </div>
+
+        <div class="box">
+            <img src="images/frozen-mixed-berry.jpg" height="70px" width="70px" alt=""/>
+            <h3>How to pick berries</h3>
+            <p>Choose your strawberries carefully. Leave the stem attached to the berry. Your strawberries should be a bright red color. Berries that appear orange or slightly green are not ripe. Strawberries do not ripen after being removed from the plant. The size of a strawberry does not affect how sweet the fruit will taste</p>
+        </div>
+
+        <div id="time">
+            <img src="images/close-up-hourglass-filled-with-sand.jpg" height="70px" width="70px" alt=""/>
+            <h3>U-Pick hours</h3>
+            <p>During the regular strawberry season, we are open daily from 8:00 am. – 7:00 p.m. We recommend you check our website, Twitter and/or Facebook for the most recent picking, crop, and weather conditions that may affect your u-pick experience</p>
+        </div>
+
+        <div id="price">
+            <h3>Pricing</h3>
+            <img src="images/american-dollar-bills.jpg" height="70px" width="70px" alt=""/>
+            <p>Pick your own strawberries for only RS.100/- We do charge for the kids that come out (3yrs old to 4 yrs old)</p>
+            <label id="ll">Picking strawberry will be compulsorily chargeable, in our rate*</label>
+        </div>
+        
+        
+        <div class="box">
+            <img src="images/help_6164480.png" height="70px" width="70px" alt=""/>
+            <h3>Help and support</h3>
+            <p>Call on Hillside Strawberry Farm (91-942-062-8395) for updated information on the latest information regarding our hours and other details.</p>
+        </div>
+    </div>
+
+    <br><br>
+</body>
+</html>
