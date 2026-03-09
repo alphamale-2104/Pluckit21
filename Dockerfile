@@ -1,12 +1,14 @@
-
+# Use official Tomcat image
 FROM tomcat:9.0
 
+# Remove default ROOT application
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-=======
-FROM tomcat:9.0
+# Copy your project files into Tomcat ROOT
+COPY web/ /usr/local/tomcat/webapps/ROOT/
 
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+# Expose port
+EXPOSE 8080
 
->>>>>>> d37f23823b8af8aa8769830831416a8051ff6c7c
-COPY web /usr/local/tomcat/webapps/ROOT
+# Start Tomcat
+CMD ["catalina.sh", "run"]
