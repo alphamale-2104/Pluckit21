@@ -63,7 +63,7 @@ final String from = "biramanepranav04@gmail.com";
 final String password = System.getenv("BREVO_SMTP_KEY");
 Properties props = new Properties();
 props.put("mail.smtp.host","smtp-relay.brevo.com");
-props.put("mail.smtp.port","587");
+props.put("mail.smtp.port","2525");
 props.put("mail.smtp.auth","true");
 props.put("mail.smtp.starttls.enable","true");
 props.put("mail.smtp.connectiontimeout","20000");
