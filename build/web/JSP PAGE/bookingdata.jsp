@@ -1,7 +1,11 @@
-<%@ page import="java.util.Properties" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <%@ page import="javax.mail.*" %>
 <%@ page import="javax.mail.internet.*" %>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.net.HttpURLConnection" %>
+<%@ page import="java.net.URL" %>
 
 <%
 
@@ -10,133 +14,113 @@ String email1 = request.getParameter("email");
 String mobile1 = request.getParameter("mobile");
 String date1 = request.getParameter("date");
 String people1 = request.getParameter("people");
-
 String adults1 = request.getParameter("adults");
 String children1 = request.getParameter("children");
 String timeslot1 = request.getParameter("timeslot");
-
 String submit = request.getParameter("btn");
 
 if(submit != null && submit.equals("Book"))
 {
-try
-{
+    try
+    {
+        // ------------------------
+        // DATABASE CONNECTION
+        // ------------------------
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(
+            "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12819535?useSSL=false&allowPublicKeyRetrieval=true",
+            "sql12819535",
+            "pZ4mgQ6Z11"
+        );
 
-// DATABASE CONNECTION
-Class.forName("com.mysql.cj.jdbc.Driver");
+        Statement st = con.createStatement();
 
-Connection con = DriverManager.getConnection(
-"jdbc:mysql://sql12.freesqldatabase.com:3306/sql12819535?useSSL=false&allowPublicKeyRetrieval=true",
-"sql12819535",
-"pZ4mgQ6Z11");
+        String query = "INSERT INTO book(name1,email1,mobile1,date1,people1,adults,children,timeslot) VALUES('"
+            + name1 + "','"
+            + email1 + "','"
+            + mobile1 + "','"
+            + date1 + "','"
+            + people1 + "','"
+            + adults1 + "','"
+            + children1 + "','"
+            + timeslot1 + "')";
 
-Statement st = con.createStatement();
+        st.executeUpdate(query);
 
-String query = "INSERT INTO book(name1,email1,mobile1,date1,people1,adults,children,timeslot) VALUES('"
-+ name1 + "','"
-+ email1 + "','"
-+ mobile1 + "','"
-+ date1 + "','"
-+ people1 + "','"
-+ adults1 + "','"
-+ children1 + "','"
-+ timeslot1 + "')";
+        // ------------------------
+        // TICKET LINK
+        // ------------------------
+        String ticketLink = "https://pluckit21-13.onrender.com/ticket.jsp?name=" 
+            + URLEncoder.encode(name1,"UTF-8")
+            + "&date=" + URLEncoder.encode(date1,"UTF-8")
+            + "&time=" + URLEncoder.encode(timeslot1,"UTF-8")
+            + "&adults=" + adults1
+            + "&children=" + children1;
 
-st.executeUpdate(query);
+        // ------------------------
+        // EMAIL SENDING (BREVO API)
+        // ------------------------
+        try
+        {
+            final String to = email1;
+            final String apiKey = System.getenv("BREVO_API_KEY"); // Your API key in Render
 
+            URL url = new URL("https://api.brevo.com/v3/smtp/email");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("accept","application/json");
+            conn.setRequestProperty("content-type","application/json");
+            conn.setRequestProperty("api-key", apiKey);
 
-// TICKET LINK
-String ticketLink = "https://pluckit21-13.onrender.com/ticket.jsp?name=" 
-+ java.net.URLEncoder.encode(name1,"UTF-8")
-+ "&date=" + java.net.URLEncoder.encode(date1,"UTF-8")
-+ "&time=" + java.net.URLEncoder.encode(timeslot1,"UTF-8")
-+ "&adults=" + adults1
-+ "&children=" + children1;
+            String jsonPayload = "{"
+                + "\"sender\":{\"name\":\"Strawberry Farm\",\"email\":\"biramanepranav04@gmail.com\"},"
+                + "\"to\":[{\"email\":\"" + to + "\"}],"
+                + "\"subject\":\"Strawberry Farm Booking Confirmation\","
+                + "\"htmlContent\":\"<h2>Strawberry Farm Booking Confirmation</h2>"
+                + "<p>Hello <b>" + name1 + "</b>,</p>"
+                + "<p>Your Strawberry Farm visit is confirmed.</p>"
+                + "<p><b>Date:</b> " + date1 + "<br>"
+                + "<b>Time Slot:</b> " + timeslot1 + "<br>"
+                + "<b>Adults:</b> " + adults1 + "<br>"
+                + "<b>Children:</b> " + children1 + "</p>"
+                + "<p><a href='" + ticketLink + "' style='background:#ff4d6d;color:white;padding:10px 15px;text-decoration:none;border-radius:5px;'>Download Your Ticket</a></p>"
+                + "<p>Please arrive 10 minutes before your slot.</p>"
+                + "<p>Thank you for booking with us.</p>\""
+                + "}";
 
+            OutputStream os = conn.getOutputStream();
+            os.write(jsonPayload.getBytes("UTF-8"));
+            os.flush();
+            os.close();
 
-// EMAIL SENDING
-try
-{
+            int responseCode = conn.getResponseCode();
+            if(responseCode >= 200 && responseCode < 300){
+                System.out.println("Email sent successfully via Brevo API.");
+            } else {
+                System.out.println("Email failed via Brevo API. Response code: " + responseCode);
+            }
 
-final String to = email1;
-final String from = "biramanepranav04@gmail.com";
-final String password = System.getenv("BREVO_SMTP_KEY");
-Properties props = new Properties();
-props.put("mail.smtp.host","smtp-relay.brevo.com");
-props.put("mail.smtp.port","2525");
-props.put("mail.smtp.auth","true");
-props.put("mail.smtp.starttls.enable","true");
-props.put("mail.smtp.connectiontimeout","20000");
-props.put("mail.smtp.timeout","20000");
-props.put("mail.smtp.writetimeout","20000");
+        }
+        catch(Exception mailError)
+        {
+            System.out.println("Email Error: " + mailError.getMessage());
+        }
 
-Session mailSession = Session.getInstance(props,
-new javax.mail.Authenticator()
-{
-protected PasswordAuthentication getPasswordAuthentication()
-{
-return new PasswordAuthentication(from,password);
-}
-});
+        // ------------------------
+        // SUCCESS MESSAGE
+        // ------------------------
+        out.println("<script>");
+        out.println("alert('Farm visit booked successfully.');");
+        out.println("window.location='../booking.html';");
+        out.println("</script>");
 
-//
-
-MimeMessage message = new MimeMessage(mailSession);
-
-message.setFrom(new InternetAddress(from));
-message.setRecipient(Message.RecipientType.TO,new InternetAddress(to));
-
-message.setSubject("Strawberry Farm Booking Confirmation","UTF-8");
-
-message.setContent(
-
-"<h2>Strawberry Farm Booking Confirmation</h2>"
-
-+ "<p>Hello <b>"+name1+"</b>,</p>"
-+ "<p>Your Strawberry Farm visit is confirmed.</p>"
-
-+ "<p>"
-+ "<b>Date:</b> "+date1+"<br>"
-+ "<b>Time Slot:</b> "+timeslot1+"<br>"
-+ "<b>Adults:</b> "+adults1+"<br>"
-+ "<b>Children:</b> "+children1
-+ "</p>"
-
-+ "<p>"
-+ "<a href='"+ticketLink+"' "
-+ "style='background:#ff4d6d;color:white;padding:10px 15px;text-decoration:none;border-radius:5px;'>"
-+ "Download Your Ticket"
-+ "</a>"
-+ "</p>"
-
-+ "<p>Please arrive 10 minutes before your slot.</p>"
-+ "<p>Thank you for booking with us.</p>"
-
-,"text/html");
-
-Transport.send(message);
-
-}
-catch(Exception mailError)
-{
-out.println("Mail Error: " + mailError.getMessage());
-}
-
-
-// SUCCESS MESSAGE
-out.println("<script>");
-out.println("alert('Farm visit booked successfully. Confirmation email sent.');");
-out.println("window.location='../booking.html';");
-out.println("</script>");
-
-con.close();
-
-}
-catch(Exception e)
-{
-out.println("Error = " + e.getMessage());
-}
-
+        con.close();
+    }
+    catch(Exception e)
+    {
+        out.println("Error = " + e.getMessage());
+    }
 }
 
 %>
