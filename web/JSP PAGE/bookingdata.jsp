@@ -50,12 +50,15 @@ if(submit != null && submit.equals("Book"))
         // ------------------------
         // TICKET LINK
         // ------------------------
-        String ticketLink = "https://pluckit21-13.onrender.com/ticket.jsp?name=" 
-            + URLEncoder.encode(name1,"UTF-8")
-            + "&date=" + URLEncoder.encode(date1,"UTF-8")
-            + "&time=" + URLEncoder.encode(timeslot1,"UTF-8")
-            + "&adults=" + adults1
-            + "&children=" + children1;
+       String ticketLink = request.getScheme() + "://" 
+    + request.getServerName() 
+    + request.getContextPath() 
+    + "/ticket.jsp?name=" 
+    + URLEncoder.encode(name1,"UTF-8")
+    + "&date=" + URLEncoder.encode(date1,"UTF-8")
+    + "&time=" + URLEncoder.encode(timeslot1,"UTF-8")
+    + "&adults=" + adults1
+    + "&children=" + children1;
 
         // ------------------------
         // EMAIL SENDING (BREVO API)
