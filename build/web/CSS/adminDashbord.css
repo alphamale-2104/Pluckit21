@@ -1,74 +1,183 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url("../images/13.jpg") no-repeat center center fixed;
-    background-size: cover;
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-#header {
-    background-color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* BUTTON */
+button{
+padding:12px 20px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
 }
 
-#n1 a {
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-    color: #b22222;
-}
-#n1 a:hover {
-    color: darkgreen;
+button:hover{
+transform:scale(1.03);
+box-shadow:0 0 10px #4fc3f7;
 }
 
-#main-heading {
-    text-align: center;
-    color: white;
-    font-size: 40px;
-    margin-top: 30px;
+/* IMAGE */
+img{
+max-width:100%;
+height:auto;
 }
 
-.dashboard-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 30px;
+/* BODY */
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background: url("../images/13.jpg") no-repeat center center fixed;
+background-size: cover;
 }
 
-.card {
-    background: rgba(255,255,255,0.95);
-    width: 45%;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease;
-}
-.card:hover {
-    transform: translateY(-5px);
+/* HEADER */
+#header{
+background-color:white;
+padding:10px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+transition:0.3s;
 }
 
-.card h2 {
-    text-align: center;
-    color: #b22222;
-    margin-bottom: 20px;
+#header:hover{
+box-shadow:
+0 0 10px #4fc3f7,
+0 0 20px #4fc3f7,
+0 0 30px #4fc3f7;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* NAVIGATION */
+#n1 a{
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+color:#b22222;
+padding:6px 10px;
+border-radius:6px;
+transition:0.3s;
 }
-table th, table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
+
+#n1 a:hover{
+color:white;
+background:darkgreen;
+
+box-shadow:
+0 0 8px #4fc3f7,
+0 0 15px #4fc3f7;
+
+transform:translateY(-2px);
 }
-table th {
-    background: #b22222;
-    color: white;
+
+/* MAIN HEADING */
+#main-heading{
+text-align:center;
+color:white;
+font-size:40px;
+margin-top:30px;
+
+text-shadow:
+0 0 5px #fff,
+0 0 10px #4fc3f7,
+0 0 20px #4fc3f7;
 }
-table tr:nth-child(even) {
-    background: #f9f9f9;
+
+/* DASHBOARD CONTAINER */
+.dashboard-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:space-around;
+margin:30px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.95);
+width:45%;
+margin:20px;
+padding:20px;
+border-radius:15px;
+
+box-shadow:0 4px 15px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+/* CARD HOVER EFFECT */
+.card:hover{
+transform:translateY(-6px);
+
+box-shadow:
+0 0 12px #4fc3f7,
+0 0 20px #4fc3f7,
+0 0 35px #4fc3f7;
+}
+
+/* CARD HEADING */
+.card h2{
+text-align:center;
+color:#b22222;
+margin-bottom:20px;
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+/* TABLE CELLS */
+table th, table td{
+padding:10px;
+border:1px solid #ccc;
+text-align:center;
+}
+
+/* TABLE HEADER */
+table th{
+background:#b22222;
+color:white;
+}
+
+/* TABLE ROWS */
+table tr:nth-child(even){
+background:#f9f9f9;
+}
+
+/* ROW HOVER EFFECT */
+table tr:hover{
+background:#eef7ff;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+body{
+padding:10px;
+}
+
+.container{
+width:95%;
+}
+
+h1{
+font-size:24px;
+}
+
+h2{
+font-size:20px;
+}
+
+button{
+width:100%;
+}
+
+input,select{
+width:100%;
+}
+
 }

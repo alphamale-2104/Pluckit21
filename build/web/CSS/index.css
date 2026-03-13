@@ -1,223 +1,387 @@
-/* --- Basic layout and fonts --- */
-* {
-    box-sizing: border-box;
+/* -------- Global Reset -------- */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+transition:all 0.3s ease;
 }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', Arial, sans-serif;
-    background: #fff;
-    color: #111;
-    line-height: 1.4;
+body{
+margin:0;
+font-family:'Poppins', Arial, sans-serif;
+background:#fff;
+color:#111;
+line-height:1.4;
 }
 
-/* --- Header --- */
-#header {
-    width: 100%;
-    padding: 12px 20px;
-    border-radius: 55px 15px 55px 15px;
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.12);
-    position: relative;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
+/* -------- Buttons -------- */
+
+button{
+padding:12px 20px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff4c61,#ff7b8a);
+border:none;
+color:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* logo */
-#starwberry {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    height: 80px;
-    width: 100px;
-    z-index: 10;
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px #ff4c61;
 }
 
-/* nav */
-#n1 {
-    margin-right: 40px;
-    padding-top: 8px;
-    text-align: right;
+/* -------- Images -------- */
+
+img{
+max-width:100%;
+height:auto;
 }
 
-#n1 a {
-    margin: 0 8px;
-    text-decoration: none;
-    color: #0b1820;
-    font-weight: 700;
-    font-size: 15px;
-    transition: all .18s ease;
+/* -------- Header -------- */
+
+#header{
+width:100%;
+padding:12px 20px;
+border-radius:55px 15px 55px 15px;
+box-shadow:8px 8px 12px rgba(0,0,0,0.12);
+position:relative;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:flex-end;
+gap:20px;
 }
 
-#n1 a:hover {
-    background-color: lightskyblue;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+#header:hover{
+box-shadow:0 0 18px rgba(0,150,255,0.4);
 }
 
-/* --- Main heading --- */
-#main-heading {
-    text-align: center;
-    font-family: serif;
-    font-size: 38px;
-    margin: 30px 0 10px 0;
-    color: #173642;
+/* -------- Logo -------- */
+
+#starwberry{
+position:absolute;
+top:10px;
+left:20px;
+height:80px;
+width:100px;
+z-index:10;
 }
 
-/* --- Hero image and overlay --- */
-.image-container {
-    position: relative;
-    width: 100%;
-    max-width: 1330px;
-    margin: 0 auto;
+/* -------- Navigation -------- */
+
+#n1{
+margin-right:40px;
+padding-top:8px;
+text-align:right;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 18px;
+#n1 a{
+margin:0 8px;
+text-decoration:none;
+color:#0b1820;
+font-weight:700;
+font-size:15px;
+padding:6px 10px;
 }
 
-.text-overlay {
-    position: absolute;
-    top: 40%;
-    left: 8%;
-    transform: translateY(-40%);
-    color: #fff;
-    font-size: 36px;
-    font-weight: 700;
-    text-align: left;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+#n1 a:hover{
+background:linear-gradient(45deg,#4facfe,#00f2fe);
+color:white;
+border-radius:8px;
+transform:translateY(-2px);
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* --- Intro text --- */
-.intro {
-    text-align: center;
-    padding: 24px 18px;
+/* -------- Main Heading -------- */
+
+#main-heading{
+text-align:center;
+font-family:serif;
+font-size:38px;
+margin:30px 0 10px 0;
+color:#173642;
+animation:fadeIn 1.2s ease;
 }
 
-#welcome {
-    margin: 6px 0;
-    font-size: 36px;
-    color: #0b2b35;
+/* animation */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-20px);
 }
 
-#spaces {
-    margin: 4px 0 12px;
-    color: #999;
+to{
+opacity:1;
+transform:translateY(0);
 }
 
-#cap {
-    margin: 6px 0;
-    font-size: 20px;
-    color: #666;
 }
 
-#para {
-    max-width: 900px;
-    margin: 10px auto 30px;
-    color: #666;
-    font-size: 18px;
+/* -------- Hero Section -------- */
+
+.image-container{
+position:relative;
+width:100%;
+max-width:1330px;
+margin:0 auto;
 }
 
-/* --- Grid of feature boxes --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 20px;
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto 60px;
+.image-container img{
+width:100%;
+height:auto;
+display:block;
+border-radius:18px;
+transition:transform 0.5s ease;
 }
 
-.box, .box2, .box4, .box6 {
-    text-align: center;
-    padding: 18px;
-    border-radius: 22px;
-    box-shadow: 6px 6px 18px rgba(0,0,0,0.08);
+.image-container img:hover{
+transform:scale(1.04);
 }
 
-/* colored boxes */
-.box {
-    background-color: #023246;
-    color: white;
-    border-radius: 55px 15px 55px 15px;
+.text-overlay{
+position:absolute;
+top:40%;
+left:8%;
+transform:translateY(-40%);
+color:#fff;
+font-size:36px;
+font-weight:700;
+text-align:left;
+text-shadow:0 2px 10px rgba(0,0,0,0.4);
 }
 
-.box img, .box2 img, .box4 img, .box6 img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-bottom: 12px;
+/* -------- Intro Section -------- */
+
+.intro{
+text-align:center;
+padding:24px 18px;
 }
 
-.box h3, .box2 h3, .box4 h3, .box6 h3 {
-    margin: 10px 0 6px;
+#welcome{
+margin:6px 0;
+font-size:36px;
+color:#0b2b35;
 }
 
-.box p, .box2 p, .box4 p, .box6 p {
-    font-size: 16px;
-    font-family: cursive;
+#spaces{
+margin:4px 0 12px;
+color:#999;
 }
 
-/* alternate white/light boxes */
-.box2, .box4, .box6 {
-    background-color: #d4d4ce;
-    color: #0b1820;
-    border-radius: 55px 15px 55px 15px;
+#cap{
+margin:6px 0;
+font-size:20px;
+color:#666;
 }
 
-/* --- Floating Chat Button (Option B) --- */
-.chat-button {
-    position: fixed;
-    bottom: 22px;
-    right: 22px;
-    background-color: #ff4c61;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 6px 8px 20px rgba(0,0,0,0.25);
-    cursor: pointer;
-    z-index: 9999;
-    transition: transform .18s ease, background-color .18s ease;
+#para{
+max-width:900px;
+margin:10px auto 30px;
+color:#666;
+font-size:18px;
 }
 
-.chat-button:hover {
-    transform: scale(1.12);
-    background-color: #ff6f80;
+/* -------- Grid Layout -------- */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+padding:20px;
+width:95%;
+max-width:1200px;
+margin:0 auto 60px;
 }
 
-.chat-button img {
-    width: 40px;
-    height: 40px;
+/* -------- Feature Boxes -------- */
+
+.box,
+.box2,
+.box4,
+.box6{
+text-align:center;
+padding:18px;
+border-radius:22px;
+box-shadow:6px 6px 18px rgba(0,0,0,0.08);
 }
 
-/* --- Responsive tweaks --- */
-@media (max-width: 800px) {
-    #main-heading { font-size: 30px; margin-right: 0; }
-    .text-overlay { font-size: 26px; left: 6%; top: 36%; }
-    #starwberry { height: 60px; width: 80px; top: 8px; left: 12px; }
-    #n1 { margin-right: 12px; font-size: 14px; }
-    .chat-button { width: 60px; height: 60px; bottom: 16px; right: 12px; }
-}
-.chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+/* dark box */
+
+.box{
+background-color:#023246;
+color:white;
+border-radius:55px 15px 55px 15px;
 }
 
-.chat-button img {
-    width: 90px;
-    height: 90px;
-    border-radius: 80%;   /* Makes it perfectly round */
-    object-fit: cover;
+/* light boxes */
+
+.box2,
+.box4,
+.box6{
+background-color:#d4d4ce;
+color:#0b1820;
+border-radius:55px 15px 55px 15px;
+}
+
+/* icon style */
+
+.box img,
+.box2 img,
+.box4 img,
+.box6 img{
+width:60px;
+height:60px;
+object-fit:contain;
+margin-bottom:12px;
+}
+
+/* text */
+
+.box h3,
+.box2 h3,
+.box4 h3,
+.box6 h3{
+margin:10px 0 6px;
+}
+
+.box p,
+.box2 p,
+.box4 p,
+.box6 p{
+font-size:16px;
+font-family:cursive;
+}
+
+/* hover animation */
+
+.box:hover,
+.box2:hover,
+.box4:hover,
+.box6:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+box-shadow:0 15px 30px rgba(0,0,0,0.25);
+
+}
+
+/* icon animation */
+
+.box:hover img,
+.box2:hover img,
+.box4:hover img,
+.box6:hover img{
+
+transform:rotate(10deg) scale(1.1);
+
+}
+
+/* glow for dark card */
+
+.box:hover{
+box-shadow:0 0 25px rgba(0,200,255,0.5);
+}
+
+/* -------- Chat Button -------- */
+
+/* Chat Button */
+
+.chat-button{
+position:fixed;
+bottom:22px;
+right:22px;
+background-color:#ff4c61;
+border-radius:50%;
+width:70px;
+height:70px;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:6px 8px 20px rgba(0,0,0,0.25);
+cursor:pointer;
+z-index:9999;
+overflow:hidden;   /* keeps image inside circle */
+}
+
+/* Chat Icon */
+
+.chat-button img{
+width:40px;
+height:40px;
+object-fit:cover;
+border-radius:50%;   /* makes image circular */
+display:block;
+}
+.chat-button:hover{
+
+transform:scale(1.15);
+
+box-shadow:0 0 20px #ff4c61,
+0 0 40px rgba(255,76,97,0.5);
+
+}
+
+/* -------- Mobile Responsive -------- */
+
+@media (max-width:800px){
+
+#main-heading{
+font-size:30px;
+}
+
+.text-overlay{
+font-size:26px;
+left:6%;
+top:36%;
+}
+
+#starwberry{
+height:60px;
+width:80px;
+top:8px;
+left:12px;
+}
+
+#n1{
+margin-right:12px;
+font-size:14px;
+}
+
+.chat-button{
+width:60px;
+height:60px;
+bottom:16px;
+right:12px;
+}
+
+}
+
+@media (max-width:768px){
+
+body{
+padding:10px;
+}
+
+h1{
+font-size:24px;
+}
+
+h2{
+font-size:20px;
+}
+
+button{
+width:100%;
+}
+
+input,
+select{
+width:100%;
+}
+
 }

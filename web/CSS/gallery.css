@@ -1,86 +1,214 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-#p2222
-{
-    font-family: cursive;
-    font-size: 35px;
-    color: black;
-    
-}
-#header {
-    position: relative;
-    border-radius: 55px 15px 55px 15px;
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.3);
-    height: 120px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
-    z-index: 10;
+/* BUTTON */
+button{
+padding:12px 20px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+border:none;
+background:#023246;
+color:white;
+transition:all 0.3s ease;
 }
 
-#starwberry {
-    height: 80px;
-    width: 100px;
+button:hover{
+background:#03506f;
+box-shadow:0 0 12px #4fc3f7;
+transform:scale(1.05);
 }
 
-#n1 {
-    margin-left: auto;
-    display: flex;
-    gap: 15px;
-    font-weight: bold;
+/* IMAGE */
+img{
+max-width:100%;
+height:auto;
 }
 
-#n1 a {
-    text-decoration: none;
-    color: black;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+/* BODY */
+body{
+font-family: Arial, sans-serif;
+background:linear-gradient(135deg,#f9f9f9,#eef7fb);
 }
 
-#n1 a:hover {
-    background-color: lightskyblue;
-    color: #000080;
-    font-size: 18px;
-    cursor: pointer;
+/* TITLE TEXT */
+#p2222{
+font-family:cursive;
+font-size:35px;
+color:black;
+text-align:center;
+margin-top:20px;
+text-shadow:0 0 6px rgba(0,0,0,0.2);
 }
 
-#head {
-    text-align: center;
-    margin: 40px 0 10px 0;
-    font-size: 36px;
-    color: #333;
+/* HEADER */
+#header{
+position:relative;
+border-radius:55px 15px 55px 15px;
+box-shadow:8px 8px 18px rgba(0,0,0,0.25);
+height:120px;
+background:#ffffff;
+display:flex;
+align-items:center;
+padding:0 50px;
+z-index:10;
+transition:all 0.3s ease;
 }
 
-p {
-    text-align: center;
-    color: #555;
-    font-size: 18px;
+/* HEADER HOVER GLOW */
+#header:hover{
+box-shadow:
+0 0 10px #4fc3f7,
+0 0 20px #4fc3f7,
+8px 8px 18px rgba(0,0,0,0.25);
 }
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px; 
-    padding: 20px 50px;
+/* LOGO */
+#starwberry{
+height:80px;
+width:100px;
+transition:transform 0.3s ease;
 }
 
-#grid img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 15px; 
-    box-shadow: 3px 3px 8px rgba(0,0,0,0.2); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+#starwberry:hover{
+transform:rotate(-5deg) scale(1.08);
 }
 
-#grid img:hover {
-    transform: scale(1.05); 
-    box-shadow: 6px 6px 15px rgba(0,0,0,0.3); 
+/* NAVIGATION */
+#n1{
+margin-left:auto;
+display:flex;
+gap:18px;
+font-weight:bold;
+}
+
+/* NAV LINKS */
+#n1 a{
+text-decoration:none;
+color:black;
+padding:8px 14px;
+border-radius:10px;
+transition:all 0.3s ease;
+position:relative;
+}
+
+/* NAV HOVER EFFECT */
+#n1 a:hover{
+background:lightskyblue;
+color:#000080;
+transform:translateY(-3px);
+box-shadow:
+0 0 8px #4fc3f7,
+0 0 14px #4fc3f7;
+}
+
+/* MAIN HEADING */
+#head{
+text-align:center;
+margin:40px 0 10px 0;
+font-size:36px;
+color:#333;
+text-shadow:0 0 5px rgba(0,0,0,0.15);
+}
+
+/* PARAGRAPH */
+p{
+text-align:center;
+color:#555;
+font-size:18px;
+line-height:1.5;
+}
+
+/* GRID LAYOUT */
+#grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:20px 50px;
+}
+
+/* GRID IMAGES */
+#grid img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:4px 4px 10px rgba(0,0,0,0.25);
+transition:all 0.4s ease;
+}
+
+/* IMAGE HOVER EFFECT */
+#grid img:hover{
+transform:scale(1.07) rotate(1deg);
+box-shadow:
+0 0 10px #4fc3f7,
+0 0 18px #4fc3f7,
+6px 6px 15px rgba(0,0,0,0.35);
+}
+
+/* CARD GLOW EFFECT OPTIONAL */
+.grid-card{
+padding:10px;
+border-radius:20px;
+transition:all 0.3s ease;
+}
+
+.grid-card:hover{
+box-shadow:
+0 0 12px #4fc3f7,
+0 0 20px #4fc3f7;
+transform:translateY(-5px);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width:768px){
+
+body{
+padding:10px;
+}
+
+/* HEADER MOBILE */
+#header{
+flex-direction:column;
+height:auto;
+padding:15px;
+gap:10px;
+}
+
+/* NAV MOBILE */
+#n1{
+flex-wrap:wrap;
+justify-content:center;
+margin-left:0;
+}
+
+/* GRID MOBILE */
+#grid{
+padding:20px;
+gap:18px;
+}
+
+/* TEXT SIZE MOBILE */
+#head{
+font-size:26px;
+}
+
+p{
+font-size:16px;
+}
+
+/* BUTTON FULL WIDTH */
+button{
+width:100%;
+}
+
+/* FORM INPUTS */
+input,select{
+width:100%;
+}
+
 }

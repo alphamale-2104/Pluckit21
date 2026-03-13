@@ -180,7 +180,8 @@ df-messenger::part(chip) {
 </div>
 
 <div class="card">
-<img src="../images/sweet_sensation.jpg" alt="Sweet Sensation">
+    
+<img src="../images/sweeeet.jpg" alt="Sweet Sensation"/>
 <div class="card-title">Sweet Sensation</div>
 <div class="card-text">Soft texture, high sugar level — great for chocolate dips.</div>
 </div>

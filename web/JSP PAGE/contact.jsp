@@ -73,7 +73,7 @@ rs=st.executeQuery("SELECT name,email,feedback FROM contact");
 
 <div id="image-container">
 
-<img id="immgs" src="../images/220.jpg" height="420px" width="1340px">
+<img id="immgs" src="../images/220.jpg" height="320px" width="1340px">
 
 <div id="text-overlay">
 <h1>Contact us & convey your message!</h1>
